@@ -38,7 +38,7 @@ const userController = {
 
 
     // create User
-    creaUser({ body }, res) {
+    createUser({ body }, res) {
         User.create(body)
         .then(dbUserData => res.json(dbUserData))
         .catch(err => res.status(400).json(err));
@@ -80,7 +80,7 @@ const userController = {
         )
         .then(dbUserData => {
             if (!dbUserData) {
-                res.status(404).json({ 'No user with this id!' });
+                res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
             res.json(dbUserData);
